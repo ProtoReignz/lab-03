@@ -1,5 +1,7 @@
 package com.example.listycity3
 
+import android.R.attr.x
+import android.R.attr.y
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -30,7 +32,10 @@ class MainActivity : ComponentActivity() {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     CityListScreen(
                         cities = cityRepository.cities,
+                        onAddCity = { cityRepository.addCity(it) },
+                        onUpdateCity = { oldCity,updatedCity -> cityRepository.updateCity(oldCity, updatedCity)},
                         modifier = Modifier.padding(innerPadding)
+
                     )
                 }
             }
